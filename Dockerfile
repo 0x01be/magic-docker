@@ -7,8 +7,6 @@ RUN apk add --no-cache --virtual build-dependencies \
     tcsh \
     readline-dev \
     m4 \
-    mesa-dev \
-    cairo-dev \
     tcl-dev \
     tk-dev
 
