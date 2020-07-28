@@ -31,6 +31,8 @@ RUN apk add --no-cache --virtual runtime-dependencies \
     bash
 
 COPY ./xorg.conf /xorg.conf
+#Xorg -noreset +extension GLX +extension RANDR +extension RENDER -logfile ./0.log -config ./xorg.conf :0
+#ENV DISPLAY :0
 
 COPY --from=builder /opt/magic/ /opt/magic/
 
