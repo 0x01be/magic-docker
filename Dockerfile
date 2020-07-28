@@ -20,3 +20,13 @@ RUN ./configure --prefix=/opt/magic/
 RUN make
 RUN make install
 
+FROM alpine:3.12.0
+
+RUN apk add --no-cache --virtual runtime-dependencies \
+    tcl \
+    bash
+
+COPY --from=builder /opt/magic/ /opt/magic/
+
+ENV PATH $PATH:/opt/magic/bin/
+
