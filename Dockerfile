@@ -25,6 +25,7 @@ FROM alpine:3.12.0
 
 RUN apk add --no-cache --virtual runtime-dependencies \
     tcl \
+    tk \
     bash
 
 COPY --from=builder /opt/magic/ /opt/magic/
