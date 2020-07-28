@@ -6,6 +6,8 @@ RUN apk add --no-cache --virtual build-dependencies \
     python3 \
     tcsh \
     readline-dev \
+    mesa-dev \
+    cairo-dev \
     m4 \
     tcl-dev \
     tk-dev
@@ -24,7 +26,11 @@ FROM alpine:3.12.0
 RUN apk add --no-cache --virtual runtime-dependencies \
     tcl \
     tk \
+    xf86-video-dummy \
+    xorg-server \
     bash
+
+COPY ./xorg.conf /xorg.conf
 
 COPY --from=builder /opt/magic/ /opt/magic/
 
