@@ -1,6 +1,9 @@
 FROM alpine:3.12.0 as builder
 
 RUN apk add --no-cache --virtual build-dependencies \
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
     git \
     build-base \
     python3 \
@@ -13,7 +16,7 @@ RUN apk add --no-cache --virtual build-dependencies \
     tk-dev
 
 #RUN git clone git://opencircuitdesign.com/magic /magic
-RUN git clone --depth=1 https://github.com/libresilicon/magic-8.2.git /magic
+RUN git clone --depth 1 https://github.com/libresilicon/magic-8.2.git /magic
 
 WORKDIR /magic
 
@@ -24,6 +27,9 @@ RUN make install
 FROM alpine:3.12.0
 
 RUN apk add --no-cache --virtual runtime-dependencies \
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
     tcl \
     tk \
     xf86-video-dummy \
