@@ -1,9 +1,6 @@
-FROM alpine:3.12.0 as builder
+FROM 0x01be/alpine:edge as builder
 
-RUN apk add --no-cache --virtual build-dependencies \
-    --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-    --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
-    --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
+RUN apk add --no-cache --virtual magic-build-dependencies \
     git \
     build-base \
     python3 \
@@ -27,8 +24,6 @@ RUN make install
 FROM 0x01be/xpra
 
 RUN apk add --no-cache --virtual magic-runtime-dependencies \
-    --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
-    --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
     tcl \
     tk \
     gtk+3.0 \
