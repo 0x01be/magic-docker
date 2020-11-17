@@ -4,7 +4,6 @@ FROM 0x01be/xpra
 
 COPY --from=build /opt/magic/ /opt/magic/
 
-USER root
 RUN apk add --no-cache --virtual magic-runtime-dependencies \
     tcl \
     tk \
@@ -12,8 +11,6 @@ RUN apk add --no-cache --virtual magic-runtime-dependencies \
     bash
 
 USER xpra
-
-ENV PATH $PATH:/opt/magic/bin/
-
-ENV COMMAND magic
+ENV PATH=${PATH}:/opt/magic/bin/ \
+    COMMAND magic
 
