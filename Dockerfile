@@ -14,7 +14,6 @@ RUN apk add --no-cache --virtual magic-build-dependencies \
 
 ENV REVISION=master
 RUN git clone --depth 1 --branch ${REVISION} git://opencircuitdesign.com/magic /magic
-#RUN git clone --depth 1 https://github.com/libresilicon/magic-8.2.git /magic
 
 WORKDIR /magic
 
