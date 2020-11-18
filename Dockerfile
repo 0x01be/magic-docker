@@ -17,6 +17,7 @@ RUN git clone --depth 1 --branch ${REVISION} git://opencircuitdesign.com/magic /
 
 WORKDIR /magic
 
+ENV C_INCLUDE_PATH=/usr/lib/bcc/include/:/usr/include/
 RUN ./configure --prefix=/opt/magic/
 RUN make all
 RUN make install
