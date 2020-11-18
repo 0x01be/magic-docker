@@ -18,6 +18,6 @@ RUN git clone --depth 1 --branch ${REVISION} git://opencircuitdesign.com/magic /
 WORKDIR /magic
 
 RUN ./configure --prefix=/opt/magic/
-RUN make
+RUN make all
 RUN make install
 
