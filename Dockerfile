@@ -19,6 +19,15 @@ RUN git clone --depth 1 --branch ${REVISION} https://github.com/RTimothyEdwards/
 
 WORKDIR /magic
 
+RUN apk add dev86
+ENV C_INCLUDE_PATH=/usr/include:/usr/lib/bcc/include \
+    CPLUS_INCLUDE_PATH=/usr/include:/usr/lib/bcc/include \
+    FLAGGS="$CFLAGS -U_FORTIFY_SOURCE" \
+    CXXFLAGS="$CXXFLAGS -U_FORTIFY_SOURCE"
+
+RUN sed -i.bak '49 i #define __NEED_wchar_t' /usr/include/X11/Xlib.h
+RUN sed -i.bak '50 i #include <bits/alltypes.h>' /usr/include/X11/Xlib.h
+
 RUN ./configure --prefix=/opt/magic/
 RUN make all
 RUN make install
