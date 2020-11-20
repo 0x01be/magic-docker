@@ -5,8 +5,8 @@ FROM 0x01be/xpra
 RUN apk add --no-cache --virtual magic-runtime-dependencies \
     tcl \
     tk \
-    gtk+3.0 \
-    bash
+    bash \
+    glu
 
 COPY --from=build /opt/magic/ /opt/magic/
 
