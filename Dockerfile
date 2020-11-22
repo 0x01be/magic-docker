@@ -17,7 +17,7 @@ ENV REVISION=master
 RUN git clone --depth 1 --branch ${REVISION} https://github.com/RTimothyEdwards/magic.git /magic
 
 WORKDIR /magic/readline/readline-4.3
-RUN ./configure --prefix=/usr && make && make install
+RUN ./configure --prefix=/opt/magic-readline && make && make install
 
 WORKDIR /magic
 
