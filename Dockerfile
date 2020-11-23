@@ -25,7 +25,14 @@ RUN sed -i.bak '49 i #define __NEED_wchar_t' /usr/include/X11/Xlib.h &&\
     sed -i.bak '50 i #include <bits/alltypes.h>' /usr/include/X11/Xlib.h &&\
     ln -s /usr/include/linux/termios.h /usr/include/termio.h
 
-RUN ./configure --prefix=/opt/magic/
+ENV CXXFLAGS="-g -O0" \
+    CCFLAGS="-g -O0"
+RUN ./configure \
+    --prefix=/opt/magic/ \
+    --enable-memdebug \
+    --disable-threads \
+    --enable-cairo-offscreen \
+    --with-gnu-ld
 RUN make all
 RUN make install
 
