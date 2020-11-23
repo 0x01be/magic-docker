@@ -6,7 +6,8 @@ RUN apk add --no-cache --virtual magic-runtime-dependencies \
     tcl \
     tk \
     bash \
-    glu
+    glu \
+    m4
 
 COPY --from=build /opt/magic/ /opt/magic/
 
