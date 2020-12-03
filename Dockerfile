@@ -24,7 +24,6 @@ RUN mkdir -p /opt/magic &&\
     ln -s /usr/include/linux/termios.h /usr/include/termio.h &&\
     ./configure \
     --prefix=/opt/magic/ \
-    --disable-threads \
     --enable-cairo-offscreen \
     --with-gnu-ld
 RUN make all
