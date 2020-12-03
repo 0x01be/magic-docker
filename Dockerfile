@@ -12,9 +12,7 @@ RUN apk add --no-cache --virtual magic-build-dependencies \
     glu-dev \
     wxgtk3
 
-ENV CXXFLAGS="-g -O0" \
-    CCFLAGS="-g -O0" \
-    REVISION=master
+ENV REVISION=master
 RUN git clone --depth 1 --branch ${REVISION} https://github.com/RTimothyEdwards/magic.git /magic
 
 WORKDIR /magic
@@ -26,7 +24,6 @@ RUN mkdir -p /opt/magic &&\
     ln -s /usr/include/linux/termios.h /usr/include/termio.h &&\
     ./configure \
     --prefix=/opt/magic/ \
-    --enable-memdebug \
     --disable-threads \
     --enable-cairo-offscreen \
     --with-gnu-ld
