@@ -9,7 +9,7 @@ RUN apk add --no-cache --virtual magic-runtime-dependencies \
     glu \
     m4
 
-COPY --from=0x01be/magic:build /opt/magic/ /opt/magic/
+COPY --from=0x01be/magic:build-threads /opt/magic/ /opt/magic/
 
 USER ${USER}
 ENV PATH=${PATH}:/opt/magic/bin/ \
