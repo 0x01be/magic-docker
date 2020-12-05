@@ -1,3 +1,5 @@
+FROM 0x01be/magic:build as build
+
 FROM 0x01be/xpra
 
 RUN apk add --no-cache --virtual magic-runtime-dependencies \
@@ -9,7 +11,7 @@ RUN apk add --no-cache --virtual magic-runtime-dependencies \
     glu \
     m4
 
-COPY --from=0x01be/magic:build /opt/magic/ /opt/magic/
+COPY --from=build /opt/magic/ /opt/magic/
 
 USER ${USER}
 ENV PATH=${PATH}:/opt/magic/bin/ \
