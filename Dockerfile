@@ -7,7 +7,10 @@ RUN apk add --no-cache --virtual magic-runtime-dependencies \
     bash \
     cairo \
     glu \
-    m4
+    m4 \
+    gdb \
+    g++ \
+    libtool
 
 COPY --from=0x01be/magic:build-debug /opt/magic/ /opt/magic/
 
